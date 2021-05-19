@@ -12,17 +12,37 @@ function App() {
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [allAnnotations, setAllAnnotations] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("all");
+
+  async function getAllAnnotations() {
+    try {
+      const response = await api.get("/annotations");
+      setAllAnnotations(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function loadNotes(option) {
+    const params = { priority: option };
+    const response = await api.get("/priorities", { params });
+    if (response) {
+      setAllAnnotations(response.data);
+    }
+  }
+
+  function handleChange(e) {
+    console.log(e);
+    setSelectedValue(e.value);
+
+    if (e.checked && e.value !== "all") {
+      loadNotes(e.value);
+    } else {
+      getAllAnnotations();
+    }
+  }
 
   useEffect(() => {
-    async function getAllAnnotations() {
-      try {
-        const response = await api.get("/annotations");
-        setAllAnnotations(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
     return getAllAnnotations();
   }, []);
 
@@ -54,8 +74,36 @@ function App() {
       console.log(error);
     }
 
+    setSelectedValue("all");
+    getAllAnnotations();
     setTitle("");
     setNotes("");
+  }
+
+  async function handleDelete(id) {
+    try {
+      const response = await api.delete(`/annotations/${id}`);
+      if (response) {
+        setAllAnnotations(
+          allAnnotations.filter((annotation) => annotation._id !== id)
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleChangePriority(id) {
+    try {
+      const response = await api.post(`/priorities/${id}`);
+      if (response && selectedValue !== "all") {
+        loadNotes(selectedValue);
+      } else {
+        getAllAnnotations();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -93,13 +141,21 @@ function App() {
               Salvar
             </button>
           </form>
-          <RadioButton />
+          <RadioButton
+            selectedValue={selectedValue}
+            handleChange={handleChange}
+          />
         </aside>
 
         <main>
           <ul>
             {allAnnotations.map((item, i) => (
-              <Notes key={i} annotation={item} />
+              <Notes
+                key={i}
+                annotation={item}
+                handleDelete={handleDelete}
+                handleChangePriority={handleChangePriority}
+              />
             ))}
           </ul>
         </main>

@@ -4,7 +4,7 @@ import Radio from "@material-ui/core/Radio";
 
 import "./style.css";
 
-function RadioButton() {
+function RadioButton({ selectedValue, handleChange }) {
   const CustomRadio = withStyles({
     root: {
       color: "#ffd3ca",
@@ -19,15 +19,27 @@ function RadioButton() {
     <>
       <div className="radioOptions">
         <div>
-          <CustomRadio />
+          <CustomRadio
+            value="all"
+            checked={selectedValue === "all"}
+            onChange={(e) => handleChange(e.target)}
+          />
           <span>Todos</span>
         </div>
         <div>
-          <CustomRadio />
+          <CustomRadio
+            value="true"
+            checked={selectedValue === "true"}
+            onChange={(e) => handleChange(e.target)}
+          />
           <span>Prioridade</span>
         </div>
         <div>
-          <CustomRadio />
+          <CustomRadio
+            value="false"
+            checked={selectedValue === "false"}
+            onChange={(e) => handleChange(e.target)}
+          />
           <span>Normal</span>
         </div>
       </div>
