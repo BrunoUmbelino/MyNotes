@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { AiTwotoneDelete, AiOutlineExclamationCircle } from "react-icons/ai";
 import api from "../../services/api";
 
-import "./style.css";
-import "./style-priority.css";
+import {
+  TitleNote,
+  ListItem,
+  HeaderNote,
+  DeleteIconWrap,
+  NoteContent,
+  PriorityIconWrap,
+} from "./NotesElements";
 
 function Note({ note, handleDelete, handleChangePriority }) {
   const [newContent, setNewContent] = useState("");
@@ -32,30 +38,32 @@ function Note({ note, handleDelete, handleChangePriority }) {
 
   return (
     <>
-      <li
+      <ListItem
+        priority={note.priority}
         className={note.priority ? "notepad-infos-priority" : "notepad-infos"}
       >
-        <div>
-          <strong>{note.title}</strong>
-          <div>
+        <HeaderNote>
+          <TitleNote>{note.title}</TitleNote>
+          <DeleteIconWrap>
             <AiTwotoneDelete size="22" onClick={() => handleDelete(note._id)} />
-          </div>
-        </div>
-        <textarea
+          </DeleteIconWrap>
+        </HeaderNote>
+        <NoteContent
+          priority={note.priority}
           name="content"
           id="content"
           defaultValue={note.content}
           onClick={(e) => changeBorder(e.target, note.priority)}
           onChange={(e) => setNewContent(e.target.value)}
           onBlur={(e) => saveContent(e, note.content)}
-        ></textarea>
-        <span>
+        ></NoteContent>
+        <PriorityIconWrap>
           <AiOutlineExclamationCircle
             size="22"
             onClick={() => handleChangePriority(note._id)}
           />
-        </span>
-      </li>
+        </PriorityIconWrap>
+      </ListItem>
     </>
   );
 }
