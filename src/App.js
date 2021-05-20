@@ -1,44 +1,87 @@
 import React, { useEffect, useState } from "react";
-import Notes from "./Components/Notes";
-import RadioButton from "./Components/RadioButton";
+import Note from "./Components/Note";
+import Sidebar from "./Components/Sidebar";
 import api from "./services/api";
 
 import "./global.css";
 import "./app.css";
-import "./sidebar.css";
-import "./main.css";
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState("");
-  const [allAnnotations, setAllAnnotations] = useState([]);
-  const [selectedValue, setSelectedValue] = useState("all");
+  const [noteTitle, setNoteTitle] = useState("");
+  const [noteContent, setNoteContent] = useState("");
+  const [allNotes, setAllNotes] = useState([]);
+  const [notesFilter, setNotesFilter] = useState("all");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const response = await api.post("/annotations", {
+        title: noteTitle,
+        content: noteContent,
+        priority: false,
+      });
+      setAllNotes([...allNotes, response.data]);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setNotesFilter("all");
+    getAllAnnotations();
+    setNoteTitle("");
+    setNoteContent("");
+  }
 
   async function getAllAnnotations() {
     try {
       const response = await api.get("/annotations");
-      setAllAnnotations(response.data);
+      setAllNotes(response.data);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function loadNotes(option) {
+  async function filteredNotes(option) {
     const params = { priority: option };
     const response = await api.get("/priorities", { params });
     if (response) {
-      setAllAnnotations(response.data);
+      setAllNotes(response.data);
     }
   }
 
-  function handleChange(e) {
+  function handleChangeFilter(e) {
     console.log(e);
-    setSelectedValue(e.value);
+    setNotesFilter(e.value);
 
     if (e.checked && e.value !== "all") {
-      loadNotes(e.value);
+      filteredNotes(e.value);
     } else {
       getAllAnnotations();
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      const response = await api.delete(`/annotations/${id}`);
+      if (response) {
+        setAllNotes(allNotes.filter((annotation) => annotation._id !== id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleChangePriority(id) {
+    try {
+      const response = await api.post(`/priorities/${id}`);
+      if (response && notesFilter !== "all") {
+        filteredNotes(notesFilter);
+      } else {
+        getAllAnnotations();
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -50,7 +93,7 @@ function App() {
     function enableSubmitButton() {
       let btn = document.getElementById("btn_submit");
 
-      if (title && notes) {
+      if (noteTitle && noteContent) {
         btn.style.background = "#eb8f7a";
       } else {
         btn.style.background = "#ffd3ca";
@@ -58,101 +101,28 @@ function App() {
     }
 
     return enableSubmitButton();
-  }, [title, notes]);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    try {
-      const response = await api.post("/annotations", {
-        title,
-        notes,
-        priority: false,
-      });
-      setAllAnnotations([...allAnnotations, response.data]);
-    } catch (error) {
-      console.log(error);
-    }
-
-    setSelectedValue("all");
-    getAllAnnotations();
-    setTitle("");
-    setNotes("");
-  }
-
-  async function handleDelete(id) {
-    try {
-      const response = await api.delete(`/annotations/${id}`);
-      if (response) {
-        setAllAnnotations(
-          allAnnotations.filter((annotation) => annotation._id !== id)
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function handleChangePriority(id) {
-    try {
-      const response = await api.post(`/priorities/${id}`);
-      if (response && selectedValue !== "all") {
-        loadNotes(selectedValue);
-      } else {
-        getAllAnnotations();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  }, [noteTitle, noteContent]);
 
   return (
     <>
       <div className="app">
         <aside>
-          <strong>Caderno de Notas</strong>
-
-          <form onSubmit={handleSubmit}>
-            <div className="input-block">
-              <label htmlFor="title">Título da Anotação</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-                maxLength={30}
-                required
-              />
-            </div>
-
-            <div className="input-block">
-              <label htmlFor="notes">Anotações</label>
-              <textarea
-                name="notes"
-                id="notes"
-                onChange={(e) => setNotes(e.target.value)}
-                value={notes}
-                required
-              ></textarea>
-            </div>
-
-            <button id="btn_submit" type="submit">
-              Salvar
-            </button>
-          </form>
-          <RadioButton
-            selectedValue={selectedValue}
-            handleChange={handleChange}
+          <Sidebar
+            handleSubmit={handleSubmit}
+            handleChangeFilter={handleChangeFilter}
+            notesFilter={notesFilter}
+            noteTitle={noteTitle}
+            noteContent={noteContent}
+            setNoteTitle={setNoteTitle}
+            setNoteContent={setNoteContent}
           />
         </aside>
-
         <main>
           <ul>
-            {allAnnotations.map((item, i) => (
-              <Notes
+            {allNotes.map((item, i) => (
+              <Note
                 key={i}
-                annotation={item}
+                note={item}
                 handleDelete={handleDelete}
                 handleChangePriority={handleChangePriority}
               />

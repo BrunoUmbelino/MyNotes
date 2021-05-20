@@ -1,4 +1,6 @@
-aside {
+import styled from "styled-components";
+
+export const SidebarWrapper = styled.aside`
   width: 320px;
   margin-bottom: 30px;
   background: #fff;
@@ -6,43 +8,43 @@ aside {
   border-radius: 10px;
   padding: 30px 20px;
   position: fixed;
-}
 
-@media (max-width: 900px) {
-  aside {
+  @media screen and (max-width: 900px) {
     position: relative;
   }
-}
+`;
 
-aside strong {
+export const Title = styled.h1`
   font-size: 20px;
   text-align: center;
   font-display: block;
   color: #333;
-}
+`;
 
-aside form {
+export const Form = styled.form`
   margin-top: 30px;
-}
+`;
 
-aside form .input-block label {
+export const InputGroup = styled.div``;
+
+export const Label = styled.label`
   color: #acacac;
   font-size: 14px;
   font-weight: bold;
   display: block;
   margin-top: 20px;
-}
+`;
 
-aside form .input-block input {
+export const Input = styled.input`
   width: 100%;
   height: 32px;
   font-size: 14px;
   color: #666;
   border: 0;
   border-bottom: 1px solid #eee;
-}
+`;
 
-aside form .input-block textarea {
+export const TextArea = styled.textarea`
   margin-top: 7px;
   width: 100%;
   height: 200px;
@@ -52,9 +54,9 @@ aside form .input-block textarea {
   border-bottom: 1px solid #eee;
   background: #fff;
   resize: none;
-}
+`;
 
-aside form button[type="submit"] {
+export const Btn = styled.button`
   width: 100%;
   border: 0;
   margin-top: 30px;
@@ -64,4 +66,4 @@ aside form button[type="submit"] {
   font-size: 16px;
   color: #fff;
   cursor: pointer;
-}
+`;

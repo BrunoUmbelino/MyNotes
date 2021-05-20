@@ -1,48 +1,38 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
 
-import "./style.css";
+import { RadioOption, RadioWrapper, CustomRadio } from "./radioBtnElements";
 
-function RadioButton({ selectedValue, handleChange }) {
-  const CustomRadio = withStyles({
-    root: {
-      color: "#ffd3ca",
-      "&$checked": {
-        color: "#eb8f7a",
-      },
-    },
-    checked: {},
-  })((props) => <Radio color="default" {...props} />);
-
+function RadioButton({ notesFilter, handleChangeFilter }) {
   return (
     <>
-      <div className="radioOptions">
-        <div>
+      <RadioWrapper>
+        <RadioOption>
           <CustomRadio
             value="all"
-            checked={selectedValue === "all"}
-            onChange={(e) => handleChange(e.target)}
+            checked={notesFilter === "all"}
+            onChange={(e) => handleChangeFilter(e.target)}
           />
           <span>Todos</span>
-        </div>
-        <div>
+        </RadioOption>
+
+        <RadioOption>
           <CustomRadio
             value="true"
-            checked={selectedValue === "true"}
-            onChange={(e) => handleChange(e.target)}
+            checked={notesFilter === "true"}
+            onChange={(e) => handleChangeFilter(e.target)}
           />
           <span>Prioridade</span>
-        </div>
-        <div>
+        </RadioOption>
+
+        <RadioOption>
           <CustomRadio
             value="false"
-            checked={selectedValue === "false"}
-            onChange={(e) => handleChange(e.target)}
+            checked={notesFilter === "false"}
+            onChange={(e) => handleChangeFilter(e.target)}
           />
           <span>Normal</span>
-        </div>
-      </div>
+        </RadioOption>
+      </RadioWrapper>
     </>
   );
 }
