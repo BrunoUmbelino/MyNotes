@@ -4,7 +4,7 @@ import Sidebar from "./Components/Sidebar";
 import api from "./services/api";
 
 import "./global.css";
-import "./app.css";
+import { AppWrap, ListNotes, Main } from "./AppElements";
 
 function App() {
   const [noteTitle, setNoteTitle] = useState("");
@@ -105,7 +105,7 @@ function App() {
 
   return (
     <>
-      <div className="app">
+      <AppWrap>
         <aside>
           <Sidebar
             handleSubmit={handleSubmit}
@@ -117,8 +117,8 @@ function App() {
             setNoteContent={setNoteContent}
           />
         </aside>
-        <main>
-          <ul>
+        <Main>
+          <ListNotes>
             {allNotes.map((item, i) => (
               <Note
                 key={i}
@@ -127,9 +127,9 @@ function App() {
                 handleChangePriority={handleChangePriority}
               />
             ))}
-          </ul>
-        </main>
-      </div>
+          </ListNotes>
+        </Main>
+      </AppWrap>
     </>
   );
 }
