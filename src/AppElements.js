@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const AppWrap = styled.div`
   max-width: 1200px;
+  height: 100%;
   margin: 0 auto;
   padding: 60px 30px;
   display: flex;
@@ -14,6 +15,7 @@ export const AppWrap = styled.div`
     padding: 30px 15px;
   }
 `;
+
 export const Main = styled.main`
   flex: 1;
   margin-left: 350px;

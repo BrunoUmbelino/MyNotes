@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ListItem = styled.li`
-  background: ${(props) => (props.priority ? "#eb8f7a" : "#fff")};
+  background: ${(props) =>
+    props.priority ? "var(--primary)" : "var(--secondary)"};
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 20px 20px 10px 20px;
@@ -18,11 +19,12 @@ export const HeaderNote = styled.div`
 `;
 
 export const DeleteIconWrap = styled.div`
-  color: #ffeae6;
+  color: gray;
   cursor: pointer;
 
   &:hover {
-    color: #eb8f7a;
+    color: ${(props) =>
+      props.priority ? "var(--secondary)" : "var(--primary)"};
     transition: 0.2s;
   }
 `;
@@ -34,8 +36,9 @@ export const NoteContent = styled.textarea`
   width: 100%;
   height: 130px;
   font-size: 14px;
-  color: #666;
-  background: ${(props) => (props.priority ? "#eb8f7a" : "#fff")};
+  color: var(--blue);
+  background: ${(props) =>
+    props.priority ? "var(--primary)" : "var(--secondary)"};
   border: 0;
   resize: none;
 
@@ -49,7 +52,7 @@ export const PriorityIconWrap = styled.div`
   cursor: pointer;
 
   &:hover {
-    color: #eb8f7a;
+    color: var(--primary);
     transition: 0.2s;
   }
 `;

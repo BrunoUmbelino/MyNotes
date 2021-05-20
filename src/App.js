@@ -3,8 +3,8 @@ import Note from "./Components/Note";
 import Sidebar from "./Components/Sidebar";
 import api from "./services/api";
 
-import "./global.css";
 import { AppWrap, ListNotes, Main } from "./AppElements";
+import { GlobalStyle } from "./globalStyles";
 
 function App() {
   const [noteTitle, setNoteTitle] = useState("");
@@ -130,6 +130,7 @@ function App() {
           </ListNotes>
         </Main>
       </AppWrap>
+      <GlobalStyle />
     </>
   );
 }

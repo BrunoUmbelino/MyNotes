@@ -26,14 +26,13 @@ function Note({ note, handleDelete, handleChangePriority }) {
   }
 
   function changeBorder(e, priority) {
-    e.style.cursor = "text";
-    e.style.borderRadius = "5px";
-
-    if (priority) {
-      e.style.boxShadow = "0 0 5px white";
-    } else {
-      e.style.boxShadow = "0 0 5px gray";
-    }
+    // e.style.cursor = "text";
+    // e.style.borderRadius = "5px";
+    // // if (priority) {
+    // //   e.style.boxShadow = "0 0 5px white";
+    // // } else {
+    // //   e.style.boxShadow = "0 0 5px gray";
+    // // }
   }
 
   return (
