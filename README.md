@@ -1,4 +1,4 @@
 # myNotes
 
-![project frame](https://github.com/BrunoUmbelino/myNotes/blob/main/github/Frame.PNG)
+![Project frame](https://github.com/BrunoUmbelino/myNotes/blob/main/github/Frame.png)
 
