@@ -11,7 +11,7 @@ import {
   PriorityIconWrap,
 } from "./NotesElements";
 
-function Note({ note, handleDelete, handleChangePriority }) {
+function Note({ note, handleDelete, handleChangePriority, i }) {
   const [newContent, setNewContent] = useState("");
 
   async function saveContent(e, content) {
@@ -23,6 +23,11 @@ function Note({ note, handleDelete, handleChangePriority }) {
     let textarea = e.target;
     textarea.style.cursor = "default";
     textarea.style.boxShadow = "none";
+  }
+
+  function generatorId(i) {
+    let id = i + 1;
+    return (id = id < 9 ? `0${id}` : `${id}`);
   }
 
   function changeBorder(e, priority) {
@@ -42,8 +47,8 @@ function Note({ note, handleDelete, handleChangePriority }) {
         className={note.priority ? "notepad-infos-priority" : "notepad-infos"}
       >
         <HeaderNote>
-          <TitleNote>{note.title}</TitleNote>
-          <DeleteIconWrap>
+          <TitleNote>{generatorId(i)}</TitleNote>
+          <DeleteIconWrap priority={note.priority}>
             <AiTwotoneDelete size="22" onClick={() => handleDelete(note._id)} />
           </DeleteIconWrap>
         </HeaderNote>
@@ -56,7 +61,7 @@ function Note({ note, handleDelete, handleChangePriority }) {
           onChange={(e) => setNewContent(e.target.value)}
           onBlur={(e) => saveContent(e, note.content)}
         ></NoteContent>
-        <PriorityIconWrap>
+        <PriorityIconWrap priority={note.priority}>
           <AiOutlineExclamationCircle
             size="22"
             onClick={() => handleChangePriority(note._id)}

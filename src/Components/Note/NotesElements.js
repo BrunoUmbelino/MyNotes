@@ -48,11 +48,10 @@ export const NoteContent = styled.textarea`
 `;
 
 export const PriorityIconWrap = styled.div`
-  color: #c4c4c4;
   cursor: pointer;
+  color: ${(props) => (props.priority ? "var(--secondary)" : "var(--primary)")};
 
   &:hover {
-    color: var(--primary);
-    transition: 0.2s;
+    transition: all ease 0.2s;
   }
 `;

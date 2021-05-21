@@ -122,6 +122,7 @@ function App() {
             {allNotes.map((item, i) => (
               <Note
                 key={i}
+                i={i}
                 note={item}
                 handleDelete={handleDelete}
                 handleChangePriority={handleChangePriority}
