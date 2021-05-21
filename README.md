@@ -13,8 +13,8 @@ MyNotes is a simple and responsive notepad, in it you can add edit and delete yo
 - React (Functional Components, Hooks)
 - Styled Components
 - JavaScript ES6
-- HTML 5
-- CSS 3
+- HTML5
+- CSS3
 
 ##### Back-end
 
