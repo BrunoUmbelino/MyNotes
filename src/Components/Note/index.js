@@ -27,7 +27,7 @@ function Note({ note, handleDelete, handleChangePriority, i }) {
 
   function generatorId(i) {
     let id = i + 1;
-    return (id = id < 9 ? `Ø${id}` : `${id}`);
+    return (id = id < 9 ? `0${id}` : `${id}`);
   }
 
   return (
@@ -37,7 +37,7 @@ function Note({ note, handleDelete, handleChangePriority, i }) {
         className={note.priority ? "notepad-infos-priority" : "notepad-infos"}
       >
         <HeaderNote>
-          <TitleNote>{generatorId(i)}</TitleNote>
+          <TitleNote priority={note.priority}>{generatorId(i)}</TitleNote>
           <DeleteIconWrap priority={note.priority}>
             <AiTwotoneDelete size="22" onClick={() => handleDelete(note._id)} />
           </DeleteIconWrap>

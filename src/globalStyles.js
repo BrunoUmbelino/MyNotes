@@ -5,9 +5,10 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   /* --primary : #f73535; */
 
-  --primary : #f73535;
-  --secondary : #f3f3f3;
-  --tertiary : #ffa4a4;
+  --primary : #1098ad;
+  --white : #fafafa;
+  --black : #636363;
+  --tertiary : #66d9e8;
 }
 
 * {

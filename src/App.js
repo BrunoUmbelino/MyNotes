@@ -35,7 +35,6 @@ function App() {
     try {
       const response = await api.get("/annotations");
       setAllNotes(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +91,7 @@ function App() {
     function enableSubmitButton() {
       let btn = document.getElementById("btn_submit");
 
-      if (noteTitle && noteContent) {
+      if (noteContent) {
         btn.style.background = "var(--primary)";
       } else {
         btn.style.background = "var(--tertiary)";
@@ -120,7 +119,7 @@ function App() {
           <ListNotes>
             {allNotes.map((item, i) => (
               <Note
-                key={i}
+                key={item._id}
                 i={i}
                 note={item}
                 handleDelete={handleDelete}

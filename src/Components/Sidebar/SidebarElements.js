@@ -4,8 +4,8 @@ export const SidebarWrapper = styled.aside`
   width: 320px;
   height: 468px;
   margin-bottom: 30px;
-  background: #fff;
-  box-shadow: 0 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  background: var(--white);
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 30px 20px;
   position: fixed;
@@ -30,7 +30,7 @@ export const Form = styled.form`
 export const InputGroup = styled.div``;
 
 export const Label = styled.label`
-  color: #acacac;
+  color: var(--black);
   font-size: 14px;
   font-weight: bold;
   display: block;
@@ -42,10 +42,10 @@ export const TextArea = styled.textarea`
   width: 100%;
   height: 200px;
   font-size: 14px;
-  color: #666;
+  color: var(--black);
   border: 0;
   border-bottom: 1px solid #eee;
-  background: #fff;
+  background: var(--white);
   resize: none;
 `;
 

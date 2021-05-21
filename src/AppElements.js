@@ -12,6 +12,9 @@ export const AppWrap = styled.div`
   @media screen and (max-width: 900px) {
     flex-direction: column;
     align-items: unset;
+  }
+
+  @media screen and (max-width: 400px) {
     padding: 30px 15px;
   }
 `;
