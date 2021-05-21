@@ -6,7 +6,6 @@ import {
   Title,
   Form,
   InputGroup,
-  Input,
   Label,
   TextArea,
   Btn,
@@ -16,29 +15,15 @@ function Sidebar({
   handleSubmit,
   handleChangeFilter,
   notesFilter,
-  noteTitle,
   noteContent,
-  setNoteTitle,
   setNoteContent,
 }) {
   return (
     <>
       <SidebarWrapper>
-        <Title>Caderno de Notas</Title>
+        <Title>MyNotes</Title>
 
         <Form onSubmit={handleSubmit}>
-          <InputGroup>
-            <Label htmlFor="title">Título da Anotação</Label>
-            <Input
-              type="text"
-              name="title"
-              id="title"
-              onChange={(e) => setNoteTitle(e.target.value)}
-              value={noteTitle}
-              maxLength={30}
-              required
-            />
-          </InputGroup>
           <InputGroup>
             <Label htmlFor="notes">Anotações</Label>
             <TextArea

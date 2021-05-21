@@ -27,17 +27,7 @@ function Note({ note, handleDelete, handleChangePriority, i }) {
 
   function generatorId(i) {
     let id = i + 1;
-    return (id = id < 9 ? `0${id}` : `${id}`);
-  }
-
-  function changeBorder(e, priority) {
-    // e.style.cursor = "text";
-    // e.style.borderRadius = "5px";
-    // // if (priority) {
-    // //   e.style.boxShadow = "0 0 5px white";
-    // // } else {
-    // //   e.style.boxShadow = "0 0 5px gray";
-    // // }
+    return (id = id < 9 ? `Ø${id}` : `${id}`);
   }
 
   return (
@@ -57,7 +47,6 @@ function Note({ note, handleDelete, handleChangePriority, i }) {
           name="content"
           id="content"
           defaultValue={note.content}
-          onClick={(e) => changeBorder(e.target, note.priority)}
           onChange={(e) => setNewContent(e.target.value)}
           onBlur={(e) => saveContent(e, note.content)}
         ></NoteContent>

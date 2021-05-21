@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SidebarWrapper = styled.aside`
   width: 320px;
+  height: 468px;
   margin-bottom: 30px;
   background: #fff;
   box-shadow: 0 0 0 14px 0 rgba(0, 0, 0, 0.2);
@@ -11,6 +12,7 @@ export const SidebarWrapper = styled.aside`
 
   @media screen and (max-width: 900px) {
     position: relative;
+    width: 100%;
   }
 `;
 
@@ -32,16 +34,7 @@ export const Label = styled.label`
   font-size: 14px;
   font-weight: bold;
   display: block;
-  margin-top: 20px;
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  height: 32px;
-  font-size: 14px;
-  color: #666;
-  border: 0;
-  border-bottom: 1px solid #eee;
+  margin-top: 30px;
 `;
 
 export const TextArea = styled.textarea`
@@ -60,7 +53,6 @@ export const Btn = styled.button`
   width: 100%;
   border: 0;
   margin-top: 30px;
-  background: #f2a090;
   border-radius: 10px;
   padding: 15px 20px;
   font-size: 16px;

@@ -17,9 +17,9 @@ export const RadioOption = styled.div`
 
 export const CustomRadio = withStyles({
   root: {
-    color: "#ffd3ca",
+    color: "var(--tertiary)",
     "&$checked": {
-      color: "#eb8f7a",
+      color: "var(--primary)",
     },
   },
   checked: {},

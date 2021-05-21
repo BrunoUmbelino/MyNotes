@@ -17,7 +17,6 @@ function App() {
 
     try {
       const response = await api.post("/annotations", {
-        title: noteTitle,
         content: noteContent,
         priority: false,
       });
@@ -94,9 +93,9 @@ function App() {
       let btn = document.getElementById("btn_submit");
 
       if (noteTitle && noteContent) {
-        btn.style.background = "#eb8f7a";
+        btn.style.background = "var(--primary)";
       } else {
-        btn.style.background = "#ffd3ca";
+        btn.style.background = "var(--tertiary)";
       }
     }
 
