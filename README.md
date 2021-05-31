@@ -24,6 +24,6 @@ MyNotes is a simple and responsive notepad, in it you can add edit and delete yo
 - Express
 - MongoDB
 
-### Backend repository link
+### Backend repository
 
 [Here](https://github.com/BrunoUmbelino/myNotes--server) 
