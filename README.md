@@ -1,6 +1,6 @@
-# myNotes
+# MyNotes
 
-![Project frame](https://github.com/BrunoUmbelino/myNotes/blob/main/github/Frame.png)
+![Project frame](https://github.com/BrunoUmbelino/myNotes/blob/main/github/Frame_.png)
 
 ### Description 
 
