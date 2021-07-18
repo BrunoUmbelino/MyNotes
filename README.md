@@ -2,7 +2,8 @@
 
 Link : https://my-notes-bruno-umbelino.netlify.app/
 
-![Project frame](https://github.com/BrunoUmbelino/myNotes/blob/main/github/Frame_.png)
+![MyNotes desktop screen](https://github.com/BrunoUmbelino/MyNotes/blob/main/github/MyNotes%20desktop%20screen.PNG)
+![MyNotes mobile screen](https://github.com/BrunoUmbelino/MyNotes/blob/main/github/MyNotes%20mobile%20screen.PNG)
 
 ### Description 
 
