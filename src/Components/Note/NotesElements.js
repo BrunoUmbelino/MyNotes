@@ -9,7 +9,8 @@ export const ListItem = styled.li`
 `;
 
 export const TitleNote = styled.h3`
-  font-size: 18px;
+  font-size: 32px;
+  font-weight: 700;
   color: ${(props) => (props.priority ? "var(--white)" : "var(--black)")};
 `;
 
@@ -34,12 +35,13 @@ export const NoteContent = styled.textarea`
   margin-bottom: 5px;
   width: 100%;
   height: 130px;
-  font-size: 14px;
+  font-size: 16px;
   color: ${(props) => (props.priority ? "var(--white)" : "var(--black)")};
   background: ${(props) =>
     props.priority ? "var(--primary)" : "var(--secondary)"};
   border: 0;
   resize: none;
+  text-transform: capitalize;
 
   &:hover {
     cursor: default;

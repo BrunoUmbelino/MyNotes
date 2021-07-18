@@ -5,10 +5,10 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   /* --primary : #f73535; */
 
-  --primary : #1098ad;
+  --primary : #F83839;
   --white : #fafafa;
-  --black : #636363;
-  --tertiary : #66d9e8;
+  --black : #333333;
+  --tertiary : #f83838d1;
 }
 
 * {
@@ -26,6 +26,6 @@ textarea {
 }
 
 body {
-  background-color: #e4e7ef;
+  background-color: #92b5b9;
 }
 `;
